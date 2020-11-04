@@ -47,11 +47,11 @@ end
 #Дан целочисленный массив. Заменить все положительные элементы на значение минимального.																									
 def five
   puts "5. Дан целочисленный массив. Заменить все положительные элементы на значение минимального."
-  for i in 0..$array_int.length-1
-    if $array_int[i] > 0
-      puts $array_int.map{|x| x = $array_int.min}
-    end
-  end
+  #for i in 0..$array_int.length-1
+   # if $array_int[i] > 0
+    #  puts $array_int.map {|i| $array_int[i] = $array_int.min} 
+    #end
+  #end
 
 end
 
@@ -59,14 +59,14 @@ end
 #Дан целочисленный массив. Заменить все отрицательные элементы на значение минимального. 
 def six
   puts "6. Дан целочисленный массив. Заменить все отрицательные элементы на значение минимального."
-  for i in 0..$array_int.length-1
-    if $array_int[i] < 0  
-      a =  $array_int.map{|x| x = $array_int.min}
-    else 
-      a = "нет отрицательных элементов" 
-    end
-    puts a
-  end
+  #for i in 0..$array_int.length-1
+   # if $array_int[i] < 0  
+    #  a = $array_int.map {|i| $array_int[i] = $array_int.min}
+    #else 
+     # a = "нет отрицательных элементов" 
+    #end
+    #puts a
+  #end
 
 end
 
@@ -483,7 +483,7 @@ end
 #Дан целочисленный массив. Осуществить циклический сдвиг элементов массива вправо на одну позицию. 
 def fifty_three
   puts "53. Дан целочисленный массив. Осуществить циклический сдвиг элементов массива вправо на одну позицию."
-  #puts ($array_int.last).append($array_int.reverse.shift.reverse)
+  puts $array_int.unshift($array_int.pop)
 end
 
 
