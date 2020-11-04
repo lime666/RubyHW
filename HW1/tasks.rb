@@ -35,9 +35,9 @@ def three_and_four
   #puts z.map {|x| x + $array_int.first}
   for i in 0..z.length-1
   	if (z[i] %2 == 0)
-  	  a = [$array_int[0]] << [z.map {|x| x + $array_int.first}] << [$array_int.last]
+  	  a = [$array_int[0]] << [z[i] + $array_int.first] << [$array_int.last]
   	else
-  	  b = [$array_int[0]] << [z.map {|x| x + $array_int.last}] << [$array_int.last]
+  	  b = [$array_int[0]] << [z[i] + $array_int.last] << [$array_int.last]
   	end
   end 
   puts a, '-----', b
