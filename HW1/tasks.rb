@@ -28,33 +28,46 @@ end
 def three_and_four
   puts "3. Дан целочисленный массив. Преобразовать его, прибавив к четным числам первый элемент. Первый и последний элементы массива не изменять."
   puts "4. Дан целочисленный массив. Преобразовать его, прибавив к нечетным числам последний элемент. Первый и последний элементы массива не изменять."
-  #for i in ($array_int[1]..$array_int[$array_int.length-2])
-  #	if ($array_int[i] %2 == 0)
-  #	  puts [$array_int[0]] << [$array_int.map {|x| x + $array_int.first}] << [$array_int.last]
-  #	elsif ($array_int[i] %2 == 1)
-  #	  puts [$array_int[0]] << [$array_int.map {|x| x + $array_int.last}] << [$array_int.last]
-  #	end
-  #end 
-  puts "doesn't work (((("
+  z = $array_int.slice(1, $array_int.length-2)
+  a = []
+  b = []
+  puts z.class
+  #puts z.map {|x| x + $array_int.first}
+  for i in 0..z.length-1
+  	if (z[i] %2 == 0)
+  	  a = [$array_int[0]] << [z.map {|x| x + $array_int.first}] << [$array_int.last]
+  	else
+  	  b = [$array_int[0]] << [z.map {|x| x + $array_int.last}] << [$array_int.last]
+  	end
+  end 
+  puts a, '-----', b
 end
 
 
 #Дан целочисленный массив. Заменить все положительные элементы на значение минимального.																									
 def five
   puts "5. Дан целочисленный массив. Заменить все положительные элементы на значение минимального."
-  if $array_int.any? {|x| x > 0}  
-  puts $array_int.map{|x| x = $array_int.min}
+  for i in 0..$array_int.length-1
+    if $array_int[i] > 0
+      puts $array_int.map{|x| x = $array_int.min}
+    end
   end
+
 end
 
 
 #Дан целочисленный массив. Заменить все отрицательные элементы на значение минимального. 
 def six
   puts "6. Дан целочисленный массив. Заменить все отрицательные элементы на значение минимального."
-  if $array_int.any? {|x| x < 0}  
-  puts $array_int.map{|x| x = $array_int.min}
-  else puts "нет отрицательных элементов" 
+  for i in 0..$array_int.length-1
+    if $array_int[i] < 0  
+      a =  $array_int.map{|x| x = $array_int.min}
+    else 
+      a = "нет отрицательных элементов" 
+    end
+    puts a
   end
+
 end
 
 
@@ -137,7 +150,7 @@ end
 #Дан целочисленный массив. Преобразовать его, вставив после каждого положительного элемента нулевой элемент. 
 def fourteen
   puts "14. Дан целочисленный массив. Преобразовать его, вставив после каждого положительного элемента нулевой элемент."
-    a = []
+  a = []
   for i in 0..$array_int.length - 1
   	if ($array_int[i] > 0)
   	  a = a << $array_int[i] << 0
@@ -158,7 +171,6 @@ end
 def sixteen
   puts "16. Дан целочисленный массив. Вывести индексы массива в том порядке, в котором соответствующие им элементы образуют убывающую последовательность."
   a = $array_int.map.with_index.sort.reverse.map(&:last)
-  #b = $array_int.sort().reverse().
   puts a
 end
 
@@ -166,8 +178,7 @@ end
 #Дан целочисленный массив. Найти индекс минимального элемента. 
 def seventeen
   puts "17. Дан целочисленный массив. Найти индекс минимального элемента."
-  a = $array_int.map.with_index.sort.map(&:last).first()
-  # или можно так $array_int.index($array_int.min)
+  a = $array_int.index($array_int.min)
   puts a
 end
 
@@ -175,7 +186,7 @@ end
 #Дан целочисленный массив. Найти индекс первого минимального элемента.
 def eighteen 
   puts "18. Дан целочисленный массив. Найти индекс первого минимального элемента."
-  puts "Как и в пердыдущем задании, оно же там по очереди все идет, значит если будут дубли, то они будут все равно после первого."
+  a = $array_int.map.with_index.sort.map(&:last).first()
 end
 
 
@@ -399,14 +410,14 @@ end
 #Дан целочисленный массив. Найти все четные элементы. 
 def fourty_four
   puts "44. Дан целочисленный массив. Найти все четные элементы."
-  puts $array_int.select {|x| x.even?}
+  puts $array_int.find_all {|x| x.even?}
 end
 
 
 #Дан целочисленный массив. Найти все нечетные элементы. 
 def fourty_five
   puts "45. Дан целочисленный массив. Найти все нечетные элементы."
-  puts $array_int.select {|x| x.odd?}
+  puts $array_int.find_all {|x| x.odd?}
 end
 
 
@@ -438,7 +449,7 @@ end
 def fourty_nine
   puts "49. Дан целочисленный массив и число К. Вывести индекс последнего элемента, меньшего К."
   k = 48
-  a = (1...$array_int.length).select {|x| $array_int[x] < k}
+  a = (1...$array_int.length).sort_by {|x| $array_int[x] < k}
   b = a.last
   puts a, "-----", b
 
@@ -448,12 +459,211 @@ end
 #Дан целочисленный массив. Вывести индексы элементов, которые меньше своего правого соседа, и количество таких чисел. 
 def fifty
   puts "50. Дан целочисленный массив. Вывести индексы элементов, которые меньше своего правого соседа, и количество таких чисел."
-  a = (1...$array_int.length).select {|x| $array_int[x] < $array_int[x-1]}
+  a = (1...$array_int.length).sort_by {|x| $array_int[x] < $array_int[x-1]}
   puts a, "-----", a.size
+end
+
+
+#Дан целочисленный массив. Необходимо вывести вначале его элементы с нечетными индексами, а затем - четными. 
+def fifty_one
+  puts "51. Дан целочисленный массив. Необходимо вывести вначале его элементы с нечетными индексами, а затем - четными."
+  puts $array_int.partition.each_with_index{|v, i| i.odd?}
+end
+
+
+#Дан целочисленный массив. Заменить все положительные элементы на значение максимального. 
+def fifty_two
+  puts "52. Дан целочисленный массив. Заменить все положительные элементы на значение максимального."
+  if $array_int.any? {|x| x > 0}  
+  puts $array_int.map{|x| x = $array_int.max}
+  end
+end
+
+
+#Дан целочисленный массив. Осуществить циклический сдвиг элементов массива вправо на одну позицию. 
+def fifty_three
+  puts "53. Дан целочисленный массив. Осуществить циклический сдвиг элементов массива вправо на одну позицию."
+  #puts ($array_int.last).append($array_int.reverse.shift.reverse)
+end
+
+
+#Дано вещественное число R и массив вещественных чисел. Найти элемент массива, который наименее близок к данному числу.  
+def fifty_four
+  puts "54. Дано вещественное число R и массив вещественных чисел. Найти элемент массива, который наименее близок к данному числу."
+  arr = Array.new(10){rand()}
+  r = rand()
+  s = arr.map {|x| (x - r).abs()}.max()
+  puts s
+end
+
+
+#Дан целочисленный массив. Преобразовать его, вставив перед каждым отрицательным элементом нулевой элемент. 
+def fifty_five
+  puts "55. Дан целочисленный массив. Преобразовать его, вставив перед каждым отрицательным элементом нулевой элемент."
+  a = []
+  for i in 0..$array_int.length - 1
+  	if ($array_int[i] < 0)
+  	  a = a << 0 << $array_int[i]
+  	end
+  end
+  puts a
+end
+
+
+#Дан целочисленный массив. Преобразовать его, вставив после каждого отрицательного элемента нулевой элемент. 
+def fifty_six
+  puts "56. Дан целочисленный массив. Преобразовать его, вставив после каждого отрицательного элемента нулевой элемент."
+  a = []
+  for i in 0..$array_int.length - 1
+  	if ($array_int[i] < 0)
+  	  a = a << $array_int[i] << 0
+  	end
+  end
+  puts a
+end
+
+
+#Дан целочисленный массив. Найти количество четных элементов. 
+def fifty_seven
+  puts "57. Дан целочисленный массив. Найти количество четных элементов."
+  puts $array_int.count {|x| x.even?}
+end
+
+
+#Дан целочисленный массив. Найти количество нечетных элементов. 
+def fifty_eight
+  puts "58. Дан целочисленный массив. Найти количество нечетных элементов."
+  puts $array_int.count {|x| x.odd?}
+end
+
+
+#Дан целочисленный массив. Упорядочить его по убыванию. 
+def fifty_nine
+  puts "59. Дан целочисленный массив. Упорядочить его по убыванию."
+  puts $array_int.sort.reverse
+end
+
+
+#Дан целочисленный массив. Вывести индексы массива в том порядке, в котором соответствующие им элементы образуют возрастающую последовательность. 
+def sixty
+  puts "60. Дан целочисленный массив. Вывести индексы массива в том порядке, в котором соответствующие им элементы образуют возрастающую последовательность."
+  a = $array_int.map.with_index.sort.map(&:last)
+  puts a
+end
+
+
+#Дан целочисленный массив. Найти индекс максимального элемента. 
+def sixty_one
+  puts "61. Дан целочисленный массив. Найти индекс максимального элемента."
+  a = $array_int.index($array_int.max)
+  puts a
+end 
+
+
+#Дан целочисленный массив. Найти индекс последнего максимального элемента. 
+def sixty_two
+  puts "62. Дан целочисленный массив. Найти индекс последнего максимального элемента."
+  a = $array_int.rindex($array_int.max)
+  puts a
+end
+
+
+#Дан целочисленный массив. Найти количество максимальных элементов.
+def sixty_three
+  puts "63. Дан целочисленный массив. Найти количество максимальных элементов."
+  a = $array_int.count($array_int.max)
+  puts a
+end 
+
+
+#Дан целочисленный массив. Найти минимальный нечетный элемент. 
+def sixty_four
+  puts "64. Дан целочисленный массив. Найти минимальный нечетный элемент."
+  puts $array_int.find_all(&:odd?).min
+end
+
+
+#Дан целочисленный массив. Найти максимальный нечетный элемент. 
+def sixty_five
+  puts "65. Дан целочисленный массив. Найти максимальный нечетный элемент."
+  puts $array_int.find_all(&:odd?).max
+end
+
+
+#Дан целочисленный массив. Найти максимальный отрицательный элемент. 
+def sixty_six
+  puts "66.Дан целочисленный массив. Найти максимальный отрицательный элемент."
+  puts $array_int.select {|x| x < 0}.max
+end
+
+
+#Дан целочисленный массив и интервал a..b. Найти максимальный из элементов в этом интервале. 
+def sixty_seven
+  puts "67. Дан целочисленный массив и интервал a..b. Найти максимальный из элементов в этом интервале."
+  puts $array_int.select {|x| x > 10 && x < 30}.max
+end
+
+
+#Дан целочисленный массив. Найти количество элементов, расположенных перед первым максимальным. 
+def sixty_eight
+  puts "68. Дан целочисленный массив. Найти количество элементов, расположенных перед первым максимальным."
+  i = $array_int.index($array_int.max)
+  puts i
+  puts $array_int[0..i-1].count
+end
+
+
+#Дан целочисленный массив. Найти количество элементов, расположенных после первого минимального . 
+def sixty_nine
+  puts "69. Дан целочисленный массив. Найти количество элементов, расположенных после первого минимального ."
+  i = $array_int.index($array_int.min)
+  puts i
+  puts $array_int[i+1..$array_int.length-1].count
+end
+
+
+#Дан целочисленный массив. Найти количество элементов, расположенных перед последним минимальным. 
+def seventy
+  puts "70. Дан целочисленный массив. Найти количество элементов, расположенных перед последним минимальным."
+  i = $array_int.rindex($array_int.min)
+  puts $array_int[0..i].count
+end
+
+
+#Дан целочисленный массив. Найти количество элементов, расположенных после последнего минимального . 
+def seventy_one
+  puts "71. Дан целочисленный массив. Найти количество элементов, расположенных после последнего минимального ."
+  i = $array_int.rindex($array_int.min)
+  puts $array_int[i+1..$array_int.length-1].count  
+end
+
+
+#Дан целочисленный массив. Найти индекс последнего экстремального (то есть минимального или максимального) элемента. 
+def seventy_two
+  puts "72. Дан целочисленный массив. Найти индекс последнего экстремального (то есть минимального или максимального) элемента."
+  puts $array_int.rindex($array_int.min || $array_int.max)
+end
+
+
+#Дан целочисленный массив. Найти количество элементов, между первым и последним максимальным. 
+def seventy_three
+  puts "73. Дан целочисленный массив. Найти количество элементов, между первым и последним максимальным. "
+  a = $array_int.index($array_int.max)
+  b = $array_int.rindex($array_int.max)
+  puts $array_int[a+1..b].count
+end
+
+
+#Дан целочисленный массив. Найти два наименьших элемента. 
+def seventy_four
+  puts "Дан целочисленный массив. Найти два наименьших элемента."
+  puts $array_int.sort.slice(0..1)
 end
 
 
 puts one, two, three_and_four, five, six, seven, eight, nine_and_ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty
 puts twenty_one, twenty_two, twenty_three, twenty_four, twenty_five, twenty_six, twenty_seven, twenty_eight, twenty_nine, thirty, thirty_one, thirty_two
 puts thirty_three, thirty_four, thirty_five, thirty_six, thirty_seven, thirty_eight, thirty_nine, fourty, fourty_one, fourty_two, fourty_three, fourty_four
-puts fourty_five, fourty_six, fourty_seven, fourty_eight, fourty_nine, fifty
+puts fourty_five, fourty_six, fourty_seven, fourty_eight, fourty_nine, fifty, fifty_one, fifty_two, fifty_three,fifty_four, fifty_five, fifty_six, fifty_seven, fifty_eight
+puts fifty_nine, sixty, sixty_one, sixty_two, sixty_three, sixty_four, sixty_five, sixty_six, sixty_seven, sixty_eight, sixty_nine, seventy, seventy_one, seventy_two
+puts seventy_three, seventy_four
