@@ -344,8 +344,9 @@ end
 #Дан целочисленный массив. Удалить все элементы, встречающиеся ровно два раза. 
 def thirty_seven
   puts "37. Дан целочисленный массив. Удалить все элементы, встречающиеся ровно два раза."
-  a = $array_int.delete_if {|x| $array_int.count(x) == 2}
-  puts a
+  #a = $array_int.delete_if {|x| fdklfn == 2}
+  #puts a
+  #зависла
 end
 
 
