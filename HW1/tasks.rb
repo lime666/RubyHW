@@ -46,11 +46,11 @@ end
 #Дан целочисленный массив. Заменить все положительные элементы на значение минимального.																									
 def five
   puts "5. Дан целочисленный массив. Заменить все положительные элементы на значение минимального."
-  #for i in 0..$array_int.length-1
-   # if $array_int[i] > 0
-    #  puts $array_int.map {|i| $array_int[i] = $array_int.min} 
-    #end
-  #end
+  for i in 0..$array_int.length-1
+    if $array_int[i] > 0
+      puts $array_int.map{|x| x = $array_int.min}
+    end
+  end
 
 end
 
@@ -58,14 +58,14 @@ end
 #Дан целочисленный массив. Заменить все отрицательные элементы на значение минимального. 
 def six
   puts "6. Дан целочисленный массив. Заменить все отрицательные элементы на значение минимального."
-  #for i in 0..$array_int.length-1
-   # if $array_int[i] < 0  
-    #  a = $array_int.map {|i| $array_int[i] = $array_int.min}
-    #else 
-     # a = "нет отрицательных элементов" 
-    #end
-    #puts a
-  #end
+  for i in 0..$array_int.length-1
+    if $array_int[i] < 0  
+      a = $array_int.map {|i| i = $array_int.min}
+    else 
+      a = "нет отрицательных элементов" 
+    end
+  puts a
+  end
 
 end
 
@@ -186,6 +186,7 @@ end
 def eighteen 
   puts "18. Дан целочисленный массив. Найти индекс первого минимального элемента."
   a = $array_int.map.with_index.sort.map(&:last).first()
+  puts a
 end
 
 
@@ -343,7 +344,8 @@ end
 #Дан целочисленный массив. Удалить все элементы, встречающиеся ровно два раза. 
 def thirty_seven
   puts "37. Дан целочисленный массив. Удалить все элементы, встречающиеся ровно два раза."
-  puts $array_int.delete_if {|x| $array_int.count(x) == 2}
+  a = $array_int.delete_if {|x| $array_int.count(x) == 2}
+  puts a
 end
 
 
