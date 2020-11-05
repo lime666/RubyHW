@@ -32,7 +32,6 @@ def three_and_four
   a = []
   b = []
   puts z.class
-  #puts z.map {|x| x + $array_int.first}
   for i in 0..z.length-1
   	if (z[i] %2 == 0)
   	  a = [$array_int[0]] << [z[i] + $array_int.first] << [$array_int.last]
@@ -504,6 +503,8 @@ def fifty_five
   for i in 0..$array_int.length - 1
   	if ($array_int[i] < 0)
   	  a = a << 0 << $array_int[i]
+  	else 
+  	  a = a << $array_int[i]
   	end
   end
   puts a
@@ -517,6 +518,8 @@ def fifty_six
   for i in 0..$array_int.length - 1
   	if ($array_int[i] < 0)
   	  a = a << $array_int[i] << 0
+  	else 
+  	  a = a << $array_int[i]
   	end
   end
   puts a
@@ -609,7 +612,8 @@ def sixty_eight
   puts "68. Дан целочисленный массив. Найти количество элементов, расположенных перед первым максимальным."
   i = $array_int.index($array_int.max)
   puts i
-  puts $array_int[0..i-1].count
+  s = $array_int[0..i].count -1 
+  puts s
 end
 
 
