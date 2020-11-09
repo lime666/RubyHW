@@ -37,19 +37,25 @@ puts '------'
 #10
 alpha = [*?a..?z]
 qwerty = []
-
-#(0..arr.length - 1).each {|x| {(0..alpha.length - 1).each {|y| arr[x] == y ? qwerty << alpha[y]}}}
-=begin
-(0..arr.length - 1).map do |x|
-  (0..alpha.length - 1).map do |y|
-  	if arr[x] == y
-  	  qwerty.append(alpha[y])
-  	end
-  end
+(0..arr.length - 1).each do |x|
+ (0..alpha.length - 1).each do |y|
+   if arr[x] == y
+     qwerty << alpha[y]
+   end
+ end
 end
-=end
-puts qwerty
+p qwerty
+=begin
+alpha = [*?a..?z]
+qwerty = []
 
+(0..(alpha.length - 1)).each {|x| 
+  {(0..(arr.length - 1)).each {|y| 
+  	arr[y] == x ? qwerty << alpha[y]}
+  }
+}
+puts qwerty
+=end
 
 #11
 arr[arr.index(arr.min)], arr[arr.index(arr.max)] = arr[arr.index(arr.max)], arr[arr.index(arr.min)]
