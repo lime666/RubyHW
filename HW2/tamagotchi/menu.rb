@@ -1,5 +1,5 @@
-require 'pet'
-require 'niffler'
+require_relative 'pet'
+require_relative 'niffler'
 require 'time'
 
 class Menu
