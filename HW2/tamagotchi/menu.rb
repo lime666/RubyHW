@@ -4,7 +4,7 @@ require 'niffler'
 class Menu
 
 
-  COMMANDS = ['feed', 'sleep', 'play', 'wakeup', 'study', 'bath', 'calm', 'WC', 'giveBack', 'help']
+  COMMANDS = ['feed', 'sleep', 'play', 'wakeup', 'study', 'bath', 'calm', 'WC', 'giveBack', 'help', 'age']
 
 def create_pet
   puts "Выберите животное, которое бы хотели: Niffler или ничего."
@@ -46,6 +46,8 @@ def start_to_play
   	  	@pet.askToGiveBack
   	  when 'help'
   	  	@pet.help
+  	  when 'age'
+  	  	@pet.show_age
   	  when 'exit'
   	  	break
   	  else

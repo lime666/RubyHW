@@ -11,6 +11,7 @@ def initialize name
     @mood = 'норм'
     @lives = 5
     @enegry = 10
+    @birthTime = Time.new
 
     puts @name + 'родился.'
 end
@@ -90,6 +91,10 @@ def help
   puts "help - помощь"
 end
 
+def show_age
+  pet_age
+end
+
 
 private
 
@@ -133,6 +138,10 @@ def angry
   if (@mood == 'зачем и почему') || (@energy > 10)
     puts "В мире не хватит ромашкового чая, чтобы успокоить ярость в моей груди."
   end
+end
+
+def pet_age
+  age = Time.now - @birthTime
 end
 
 def randomState
