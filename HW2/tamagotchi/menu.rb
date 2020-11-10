@@ -1,5 +1,6 @@
 require 'pet'
 require 'niffler'
+require 'time'
 
 class Menu
 
