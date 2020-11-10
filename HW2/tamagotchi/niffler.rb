@@ -1,10 +1,11 @@
-require_relative 'pet'
+require 'time'
+require_relative 'pet' 
 
 class Niffler < Pet
 
 
 def initialize name
-  @name = name
+  super
 end
 
 def askToGiveBack
@@ -12,9 +13,50 @@ def askToGiveBack
   	puts "Верни все назад."
   	@mood = 'ну такое'
   	@enegry -= 1
+    sleep 3
   	puts "Ну ладно, так уж и быть."
   end
   randomState
+end
+
+def feed
+  super
+end
+
+def sleeping
+  super
+end
+
+def play
+  super
+end
+
+def wakeup
+  super
+end
+
+def study
+  super
+end
+
+def bath
+  super
+end
+
+def calm
+  super
+end
+
+def WC
+  super
+end
+
+def age
+  super
+end
+
+def help
+  super
 end
 
 

@@ -5,32 +5,34 @@ require 'time'
 class Menu
 
 
-  COMMANDS = ['feed', 'sleep', 'play', 'wakeup', 'study', 'bath', 'calm', 'WC', 'giveBack', 'help', 'age']
+  COMMANDS = ['feed', 'sleeping', 'play', 'wakeup', 'study', 'bath', 'calm', 'WC', 'giveBack', 'help', 'age', 'exit']
 
 def create_pet
   puts "Выберите животное, которое бы хотели: Niffler или ничего."
   animal_type = gets.chomp.downcase
-  if type == 'niffler'
+  puts "Как бы Вы хотели его назвать?"
+  name = gets.chomp
+  if animal_type == 'niffler'
   	@pet = Niffler.new(name)
   else
   	puts "В настоящий момент другие виды недоступны."
   end
   puts "Подождите немного пока животина родится."
+  sleep 5
+  puts "Нюхлер #{name} родился. Теперь это Ваша ответственность."
+  sleep 2
 end
 
 def start_to_play
   create_pet
 
-  puts "Выберите комманду: "
-  puts COMMANDS
-  command = gets.chomp.downcase
-
-  until command == 'exit' do 
+  while true 
+  	command = comm
   	case command
   	  when 'feed'
   	  	@pet.feed
-  	  when 'sleep'
-  	  	@pet.sleep
+  	  when 'sleeping'
+  	  	@pet.sleeping
   	  when 'play'
   	  	@pet.play
   	  when 'wakeup'
@@ -57,4 +59,12 @@ def start_to_play
   	end
 end
 
+def comm
+  puts "Выберите комманду: "
+  puts COMMANDS
+  command = gets.chomp.downcase
 end
+
+end
+
+Menu.new.start_to_play
