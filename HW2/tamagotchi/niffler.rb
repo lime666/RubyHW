@@ -12,7 +12,7 @@ def askToGiveBack
   if stillStuff
   	puts "Верни все назад."
   	@mood = 'ну такое'
-  	@enegry -= 1
+  	@energy -= 1
     sleep 3
   	puts "Ну ладно, так уж и быть."
   end

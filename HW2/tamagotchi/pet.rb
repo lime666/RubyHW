@@ -1,19 +1,20 @@
 require 'time'
 
+
 class Pet
 
   attr_accessor :name
 
 
 def initialize name
-    @name = name
-    @asleep = false
-    @stuffInBelly = 10
-    @stuffInIntestine = 0
-    @mood = 'норм'
-    @lives = 5
-    @enegry = 10
-    @birthTime = Time.new
+  @name = name
+  @asleep = false
+  @stuffInBelly = 10
+  @stuffInIntestine = 0
+  @mood = 'норм'
+  @lives = 5
+  @energy = 10
+  @birthTime = Time.new
 
 end
 
@@ -37,7 +38,7 @@ def sleeping
 end
 
 def play
-  puts "Вы играете с #{@animal_type}."
+  puts "Вы играете с #{@name}."
   @energy = @energy - 2
   @mood = 'счастлив'
   if @energy <= 6
@@ -53,7 +54,7 @@ end
 
 def study
   puts "Вы учите #{@name} какой-то дичи."
-  @enegry -= 2
+  @energy -= 2
   @mood = 'ну такое'
 end
 

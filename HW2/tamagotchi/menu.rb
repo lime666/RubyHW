@@ -9,18 +9,19 @@ class Menu
 
 def create_pet
   puts "Выберите животное, которое бы хотели: Niffler или ничего."
-  animal_type = gets.chomp.downcase
+  @animal_type = gets.chomp.downcase
   puts "Как бы Вы хотели его назвать?"
   name = gets.chomp
-  if animal_type == 'niffler'
+  if @animal_type == 'niffler'
   	@pet = Niffler.new(name)
+  	puts "Подождите немного пока животина родится."
+    sleep 5
+    puts "Нюхлер #{name} родился. Теперь это Ваша ответственность."
+    sleep 2
   else
   	puts "В настоящий момент другие виды недоступны."
   end
-  puts "Подождите немного пока животина родится."
-  sleep 5
-  puts "Нюхлер #{name} родился. Теперь это Ваша ответственность."
-  sleep 2
+  
 end
 
 def start_to_play
