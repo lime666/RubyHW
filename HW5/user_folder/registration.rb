@@ -77,12 +77,12 @@ class SuperAdmin < Admin
   end
 
   def commands
-    super + %w[change_users_login change_status annihilation reset]
+    super + %w[change_users_name change_status annihilation reset]
   end
 
   def help
     super
-    puts "change_users_login - изменить логин пользователя"
+    puts "change_users_name - изменить логин пользователя"
     puts "change_status - изменить показатели животного"
     puts "annihilation - аннигилировать питомца"
     puts "reset - сбросить показатели до изначальных"

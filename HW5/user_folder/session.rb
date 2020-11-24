@@ -18,9 +18,11 @@ class Session
 
   def sign_in
     if is_admin?
-      user = Admin.new 
+      user = Admin.new
+      puts "Привет, админ."
     elsif  is_superadmin?
       user = Superadmin.new
+      puts "Привет, суперадмин."
     else
       user = User.new(@first_name, @password)
       if user.exists?(user.load_users)

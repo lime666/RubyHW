@@ -141,7 +141,7 @@ class Pet
     save
   end
 
-  def change_users_login
+  def change_users_name
     puts "Введите новый пароль:"
     new_login = gets.chomp.downcase
     self.first_name = new_login
