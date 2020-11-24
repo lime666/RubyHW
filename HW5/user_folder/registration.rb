@@ -34,7 +34,7 @@ class User
     }
     users_array = load_users
 
-    if !exists?(users_array)
+    if exists?(users_array) == false
       users_array << user
       File.open('./db/usersdb.yml', 'w') { |f| f.puts(users_array.to_yaml) }
     end  

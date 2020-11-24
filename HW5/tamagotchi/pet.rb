@@ -109,7 +109,7 @@ class Pet
   end
 
   def save
-    name = self.first_name
+    name = self.name
     pet = YAML.dump(self) 
     File.open("./db/#{name}.yml", 'w') { |f| f.puts(pet) }
   end

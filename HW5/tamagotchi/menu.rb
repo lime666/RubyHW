@@ -22,10 +22,10 @@ def create_user
   end
   @user = Session.new(first_name, password).sign_in  
   create_user unless @user
+  create_pet
 end
 
 def create_pet
-  create_user
   puts "Выберите животное, которое бы хотели: Niffler или ничего."
   @animal_type = gets.chomp.downcase
   puts "Как бы Вы хотели его назвать?"
