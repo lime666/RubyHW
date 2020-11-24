@@ -6,8 +6,9 @@ class Pet
   attr_accessor :name, :status
 
 
-  def initialize name
+  def initialize (name, animal_type)
     @name = name
+    @animal_type = animal_type
     @asleep = false
     @stuffInBelly = 10
     @stuffInIntestine = 0
@@ -42,7 +43,7 @@ class Pet
 
   def play
     puts "Вы играете с #{@name}."
-    @energy = @energy - 2
+    @energy -= 2
     @mood = 'счастлив'
     if @energy <= 6
       puts "Жизнь меня к такому не готовила, хозяин."
@@ -127,7 +128,10 @@ class Pet
   end
 
   def change_animal_type
-    #have no other animal type for now, it will be fixed in future
+    puts "Ведите новый тип животного: Niffler или Hippogriff."
+    new_animal_type = gets.chomp.downcase
+    self.animal_type = new_animal_type
+    save
   end
 
   def change_animal_name
