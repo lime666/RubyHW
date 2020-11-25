@@ -10,6 +10,7 @@ class Menu
 
   COMMANDS = %w[feed sleeping play wakeup study bath calm WC giveBack help age exit]
 
+
   def create_user
     puts "Введите Ваше имя: "
     first_name = gets.chomp.downcase
@@ -83,6 +84,8 @@ class Menu
   	    	@pet.help
   	    when 'age'
   	    	@pet.show_age
+        when 'fly'
+          @pet.fly
         when 'show_users_pet'
           @pet.show_users_pet
         when 'change_animal_type'

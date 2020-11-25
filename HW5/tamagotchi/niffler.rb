@@ -17,6 +17,7 @@ class Niffler < Pet
   	  puts "Ну ладно, так уж и быть."
     end
     randomState
+    save
   end
 
   def feed

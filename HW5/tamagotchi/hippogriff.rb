@@ -9,9 +9,11 @@ class Hippogriff < Pet
   end
 
   def fly
+    bow_down
     puts "Гиппогриф Вас катает. Как чудесно видеть мир с высоты."
     @energy -= 4
     wantToSleep
+    save
   end
 
   def feed
@@ -52,6 +54,21 @@ class Hippogriff < Pet
 
   def help
     super
+  end
+
+
+  private
+
+  def bow_down
+    puts "Для того, чтобы гиппогриф Вас прокатил необходимо показать, что Вам иожно доверять."
+    puts "Поклонитесь ему и, не моргая, посмотрите в его глаза."
+    puts "Подтвердите действие. Напишите: bow down."
+    z = gets.chomp.downcase
+    if z != "bow down"
+      puts "Гиппогриф отказывается Вас катать."
+      return comm
+    end
+
   end
 
 
