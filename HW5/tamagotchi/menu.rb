@@ -1,5 +1,6 @@
 require_relative 'pet'
 require_relative 'niffler'
+require_relative 'hippogriff'
 require 'time'
 require 'yaml'
 require_relative '../user_folder/session'
@@ -8,7 +9,12 @@ require_relative '../user_folder/registration'
 class Menu
 
 
-  COMMANDS = %w[feed sleeping play wakeup study bath calm WC giveBack help age exit]
+  COMMANDS = %w[feed sleeping play wakeup study bath calm WC help age exit]
+  if @animal_type == 'niffler'
+    COMMANDS += 'giveBack'
+  elsif @animal_type == 'hippogriff'
+    COMMANDS += 'fly'
+  end
 
 
   def create_user
