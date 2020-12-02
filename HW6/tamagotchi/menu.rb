@@ -65,12 +65,13 @@ class Pet_Menu
 
     when '/create_pet'
       Rack::Response.new do |response|
-        response.set_cookie('hungry', @@stuffInBelly)
+        response.set_cookie('hungry', @stuffInBelly)
         response.set_cookie('WC', @stuffInIntestine)
         response.set_cookie('mood', @mood)
         response.set_cookie('lives', @lives)
         response.set_cookie('energy', @energy)
         response.set_cookie('name', @name)
+        response.set_cookie('birth', @birthTime)
         response.redirect('/index')
       end
 
@@ -88,13 +89,13 @@ class Pet_Menu
       end
 =end
     when '/index'
-      if death
-        Rack::Response.new('Game Over', 404)
-        Rack::Response.new(render("../views/exit.html.erb"))
-      else
+      #if death
+       # Rack::Response.new('Game Over', 404)
+       # Rack::Response.new(render("../views/exit.html.erb"))
+      #else
         start_to_play
         Rack::Response.new(render("../views/index.html.erb"))
-      end
+      #end
 
 =begin      
       return Pet_Actions.feed if @rack_request('feed')
@@ -117,39 +118,36 @@ end
 
   def start_to_play
 
-    while true 
-    	command = comm
     	case command
-  	    when 'feed'
+  	    when get('feed')
   	    	@pet.feed
-  	    when 'sleeping'
+  	    when get('sleeping')
   	    	@pet.sleeping
-  	    when 'play'
+  	    when get('play')
   	    	@pet.play
-  	    when 'wakeup'
+  	    when get('wakeup')
   	    	@pet.wakeup
-  	    when 'study'
+  	    when get('study')
   	    	@pet.study
-  	    when 'bath'
+  	    when get('bath')
   	    	@pet.bath
-  	    when 'calm'
+  	    when get('calm')
   	    	@pet.calm
-  	    when 'WC'
+  	    when get('WC')
   	    	@pet.WC
-  	    when 'giveBack'
+  	    when get('giveBack')
   	    	@pet.askToGiveBack
-  	    when 'help'
+  	    when get('help')
   	    	@pet.help
-  	    when 'age'
+  	    when get('age')
   	    	@pet.show_age
-        when 'fly'
+        when get('fly')
           @pet.fly
-  	    when 'exit'
+  	    when get('exit')
   	    	break
   	    else
   	    	p "Сорян, я не понимаю что от меня требуется."
   	    end
-    end
   end
 
 
@@ -158,6 +156,10 @@ end
     ERB.new(File.read(path)).result(binding)
   end
 
+
+  def get(attr)
+    @rack_request.cookies["#{attr}"]
+  end
 
 end
 
