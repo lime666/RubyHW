@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/index.css">
+  </head>
+  <body class="body_index">
+    <div class='row'>
+    <div class='col-sm-2'></div>
+        <div class='col-sm-8' style='text-align:center'>             
+              <div class='btn-info'>
+                  <% if @pet.is_a? Niffler %>
+                      <p><img width='500px'src='https://static.wikia.nocookie.net/harrypotter/images/e/e9/Niffler_FBCFTWW.png/revision/latest/top-crop/width/360/height/450?cb=20161129180529'/></p>
+                  <% elsif @pet.is_a? Hippogriff %>
+                      <p><img width='500px'src='https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/335/1000/1000/636252776578605778.jpeg'/></p>          
+                  <% end %>
+                   
+                        <p>Привет. Я <%= @animal_type> по имени <%= @pet.name %>. Рад стать живым.</b></p>                    
+                        <p>Вот чем я живу: <%= @pet.status %></p>
+              </div>
+
+
+
+
+<div class="row" style='align:center'>
+  <form action="/index" method="get">
+
+    <button type="submit" class="btn btn-outline-success" name="feed" value="feed">Feed</button>
+    <button type="submit" class="btn btn-outline-success" name="sleeping" value="sleeping">Sleep</button>
+    <button type="submit" class="btn btn-outline-success" name="play" value="play">Play</button>
+    <button type="submit" class="btn btn-outline-success" name="wakeup" value="wakeup">Wake Up</button>
+    <button type="submit" class="btn btn-outline-success" name="study" value="study">Study</button>
+    <button type="submit" class="btn btn-outline-success" name="bath" value="bath">Take Bath</button>
+    <button type="submit" class="btn btn-outline-danger" name="calm" value="calm">Calm</button>
+    <button type="submit" class="btn btn-outline-danger" name="WC" value="WC">WC</button>
+    <button type="submit" class="btn btn-outline-warning" name="help" value="help">Help</button>
+
+
+  </form>
+
+  <form action="/exit" method="get">
+
+    <button type="submit" class="btn btn-outline-dark" name="exit" value="exit">Exit</button>
+    <% redirect("/exit")%>
+
+  </form>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

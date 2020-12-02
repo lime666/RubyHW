@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/index.css">
+  </head>
+  <body class="body_index">
+
+    <form action="/create_pet" method='get'>
+    <p>Выберите животное, которое бы хотели: Niffler или Hippogriff.</p>
+    <select>
+      <option value ="niffler">Niffler</option>
+      <option value ="hippogriff">Hippogriff</option>
+    </select>
+    <p>Как бы Вы хотели его назвать?</p>
+      <input name='name' type="text" class="form-control">
+    <p><button type="submit" class="btn btn-primary">Создать</button></p>
+    <%create_pet redirect("/index")%> 
+
+</form>
+</body>
+</html>
